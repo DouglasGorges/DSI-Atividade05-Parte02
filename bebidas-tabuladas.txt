@@ -5,5 +5,4 @@ PRECO	BEBIDA
 7,6	Coca-Cola
 6,5	Fanta Laranja
 6,5	Fanta Uva
-5,5	Guaraná
 4,5	Limonada

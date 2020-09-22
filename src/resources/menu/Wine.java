@@ -15,7 +15,7 @@ public class Wine extends MenuItem {
         printWines();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código do vinho desejado:");
+        System.out.println(CODIGO_DESEJADO);
         Integer wineCode = scanCode.nextInt();
         return winesMap.get(wineCode);
     }
@@ -24,7 +24,7 @@ public class Wine extends MenuItem {
         printWines();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código do vinho desejado:");
+        System.out.println(CODIGO_DESEJADO);
         Integer wineCode = scanCode.nextInt();
         return wineCode;
     }
@@ -92,6 +92,6 @@ public class Wine extends MenuItem {
             saveWine(wine, appendInFile);
             appendInFile = true;
         }
-        System.out.println("Operação efetuada com sucesso!\n");
+        System.out.println(SUCESSO);
     }
 }

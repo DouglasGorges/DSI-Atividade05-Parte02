@@ -16,7 +16,7 @@ public class Drink extends MenuItem {
         printDrinks();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código da bebida desejada:");
+        System.out.println(CODIGO_DESEJADO);
         Integer drinkCode = scanCode.nextInt();
         return drinksMap.get(drinkCode);
     }
@@ -25,7 +25,7 @@ public class Drink extends MenuItem {
         printDrinks();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código da bebida desejada:");
+        System.out.println(CODIGO_DESEJADO);
         Integer drinkCode = scanCode.nextInt();
         return drinkCode;
     }
@@ -94,6 +94,6 @@ public class Drink extends MenuItem {
             saveDrink(drink, appendInFile);
             appendInFile = true;
         }
-        System.out.println("Operação efetuada com sucesso!\n");
+        System.out.println(SUCESSO);
     }
 }

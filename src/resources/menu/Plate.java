@@ -17,7 +17,7 @@ public class Plate extends MenuItem {
         printPlates();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código do prato desejado:");
+        System.out.println(CODIGO_DESEJADO);
         Integer plateCode = scanCode.nextInt();
         return platesMap.get(plateCode);
     }
@@ -26,7 +26,7 @@ public class Plate extends MenuItem {
         printPlates();
 
         Scanner scanCode = new Scanner(System.in);
-        System.out.println("Digite o código do prato desejado:");
+        System.out.println(CODIGO_DESEJADO);
         Integer plateCode = scanCode.nextInt();
         return plateCode;
     }
@@ -91,6 +91,6 @@ public class Plate extends MenuItem {
             savePlate(plate, appendInFile);
             appendInFile = true;
         }
-        System.out.println("Operação efetuada com sucesso!\n");
+        System.out.println(SUCESSO);
     }
 }
