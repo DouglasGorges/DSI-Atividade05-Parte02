@@ -18,3 +18,8 @@ Guaraná	5.5
 Chardonnay Americano	38.1
 Observações: n;
 
+UltimoPratoDaLista	13.0
+Pepsi	5.3
+VinhoDGPRECO	11.0
+Observações: n;
+

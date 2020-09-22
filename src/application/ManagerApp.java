@@ -35,12 +35,12 @@ public class ManagerApp {
             systemFinisher();
     }
 
-    private static void register(){
+    private static void register() {
         Scanner scanFunction = new Scanner(System.in);
 
         System.out.println("Selecione uma função:");
-        System.out.println("1 - Adicionar novo item ao Menu");
-        System.out.println("2 - Remover um item do Menu");
+        System.out.println("1 - Adicionar Item");
+        System.out.println("2 - Remover Item");
         System.out.println("");
         System.out.println("3 - Voltar ao menu principal");
         Integer function = scanFunction.nextInt();
@@ -53,7 +53,7 @@ public class ManagerApp {
             initMenu();
     }
 
-    private static void removeRegister(){
+    private static void removeRegister() {
         Scanner scanItemType = new Scanner(System.in);
 
         System.out.println("Selecione um tipo de item:");
@@ -66,12 +66,11 @@ public class ManagerApp {
 
         if (itemType.equals(1))
             plate.deletePlate();
-//        else if (itemType.equals(2))
-//            drink.deleteDrink();
-//        else if (itemType.equals(3))
-//            wine.deleteWine();
-        else
-            initMenu();
+        else if (itemType.equals(2))
+            drink.deleteDrink();
+        else if (itemType.equals(3))
+            wine.deleteWine();
+        initMenu();
     }
 
     private static void addRegister() {
@@ -125,7 +124,7 @@ public class ManagerApp {
         drink.setName(drinkName);
         drink.setPrice(drinkPrice);
 
-        drink.saveDrink(drink);
+        drink.saveDrink(drink, true);
 
         System.out.println("\n\n");
         System.out.println("----------");
@@ -143,7 +142,7 @@ public class ManagerApp {
         wine.setName(wineName);
         wine.setPrice(winePrice);
 
-        wine.saveWine(wine);
+        wine.saveWine(wine, true);
 
         System.out.println("\n\n");
         System.out.println("----------");
@@ -180,7 +179,7 @@ public class ManagerApp {
         initMenu();
     }
 
-    private static void systemFinisher(){
+    private static void systemFinisher() {
         System.out.println("Sistema finalizado com sucesso!");
     }
 }

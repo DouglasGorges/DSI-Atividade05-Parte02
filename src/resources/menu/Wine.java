@@ -3,14 +3,39 @@ package resources.menu;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Wine extends MenuItem {
-    StringBuilder wineStr = new StringBuilder();
+    Map<Integer, Wine> winesMap = new HashMap<Integer, Wine>();
 
     public Wine() {
+    }
+
+    public Wine selectWine() {
+        printWines();
+
+        Scanner scanCode = new Scanner(System.in);
+        System.out.println("Digite o código do vinho desejado:");
+        Integer wineCode = scanCode.nextInt();
+        return winesMap.get(wineCode);
+    }
+
+    public Integer selectWineCode() {
+        printWines();
+
+        Scanner scanCode = new Scanner(System.in);
+        System.out.println("Digite o código do vinho desejado:");
+        Integer wineCode = scanCode.nextInt();
+        return wineCode;
+    }
+
+    public void printWines() {
+        winesMap.clear();
+        Integer mapControl = 0;
+        for (Wine wine : loadWines()) {
+            winesMap.put(++mapControl, wine);
+            printItem(mapControl, wine);
+        }
     }
 
     public List<Wine> loadWines() {
@@ -36,13 +61,37 @@ public class Wine extends MenuItem {
         }
     }
 
-    public void saveWine(Wine wine) {
+    public void saveWine(Wine wine, boolean append) {
         try {
-            PrintWriter output = new PrintWriter(new FileWriter("vinhos-tabulados.txt", true));
+            PrintWriter output = new PrintWriter(new FileWriter("vinhos-tabulados.txt", append));
+            output.print(prepareToSave(wine, append));
             output.close();
-            System.out.println("Vinho salvo com sucesso!");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public String prepareToSave(Wine wine, boolean append) {
+        StringBuilder wineStr = new StringBuilder();
+
+        if (!append)
+            wineStr.append("PRECO\tVINHO");
+
+        String winePrice = Double.toString(wine.getPrice());
+        wineStr.append("\n");
+        wineStr.append(winePrice);
+        wineStr.append("\t");
+        wineStr.append(wine.getName());
+        return wineStr.toString();
+    }
+
+    public void deleteWine() {
+        winesMap.remove(selectWineCode());
+        boolean appendInFile = false;
+        for (Wine wine : winesMap.values()) {
+            saveWine(wine, appendInFile);
+            appendInFile = true;
+        }
+        System.out.println("Operação efetuada com sucesso!\n");
     }
 }

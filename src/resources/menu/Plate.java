@@ -4,14 +4,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Plate extends MenuItem {
 
-    HashMap<Integer, Plate> platesMap = new HashMap<Integer, Plate>();
+    Map<Integer, Plate> platesMap = new HashMap<Integer, Plate>();
 
     public Plate() {
     }
@@ -23,6 +20,15 @@ public class Plate extends MenuItem {
         System.out.println("Digite o código do prato desejado:");
         Integer plateCode = scanCode.nextInt();
         return platesMap.get(plateCode);
+    }
+
+    public Integer selectPlateCode() {
+        printPlates();
+
+        Scanner scanCode = new Scanner(System.in);
+        System.out.println("Digite o código do prato desejado:");
+        Integer plateCode = scanCode.nextInt();
+        return plateCode;
     }
 
     public void printPlates() {
@@ -79,11 +85,12 @@ public class Plate extends MenuItem {
     }
 
     public void deletePlate() {
-        platesMap.remove(selectPlate());
-        boolean append = false;
+        platesMap.remove(selectPlateCode());
+        boolean appendInFile = false;
         for (Plate plate : platesMap.values()) {
-            savePlate(plate, append);
-            append = true;
+            savePlate(plate, appendInFile);
+            appendInFile = true;
         }
+        System.out.println("Operação efetuada com sucesso!\n");
     }
 }

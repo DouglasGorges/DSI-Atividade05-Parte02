@@ -3,14 +3,40 @@ package resources.menu;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Drink extends MenuItem {
-    StringBuilder drinkStr = new StringBuilder();
+
+    Map<Integer, Drink> drinksMap = new HashMap<Integer, Drink>();
 
     public Drink() {
+    }
+
+    public Drink selectDrink() {
+        printDrinks();
+
+        Scanner scanCode = new Scanner(System.in);
+        System.out.println("Digite o código da bebida desejada:");
+        Integer drinkCode = scanCode.nextInt();
+        return drinksMap.get(drinkCode);
+    }
+
+    public Integer selectDrinkCode() {
+        printDrinks();
+
+        Scanner scanCode = new Scanner(System.in);
+        System.out.println("Digite o código da bebida desejada:");
+        Integer drinkCode = scanCode.nextInt();
+        return drinkCode;
+    }
+
+    public void printDrinks() {
+        drinksMap.clear();
+        Integer mapControl = 0;
+        for (Drink drink : loadDrinks()) {
+            drinksMap.put(++mapControl, drink);
+            printItem(mapControl, drink);
+        }
     }
 
     public List<Drink> loadDrinks() {
@@ -36,18 +62,22 @@ public class Drink extends MenuItem {
         }
     }
 
-    public void saveDrink(Drink drink) {
+    public void saveDrink(Drink drink, boolean append) {
         try {
-            PrintWriter output = new PrintWriter(new FileWriter("bebidas-tabuladas.txt", true));
-            output.print(prepareToSave(drink));
+            PrintWriter output = new PrintWriter(new FileWriter("bebidas-tabuladas.txt", append));
+            output.print(prepareToSave(drink, append));
             output.close();
-            System.out.println("Bebida salva com sucesso!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public String prepareToSave(Drink drink) {
+    public String prepareToSave(Drink drink, boolean append) {
+        StringBuilder drinkStr = new StringBuilder();
+
+        if (!append)
+            drinkStr.append("PRECO\tBEBIDA");
+
         String drinkPriceRaw = Double.toString(drink.getPrice());
         String drinkPrice = drinkPriceRaw.replace(".", ",");
         drinkStr.append("\n");
@@ -55,5 +85,15 @@ public class Drink extends MenuItem {
         drinkStr.append("\t");
         drinkStr.append(drink.getName());
         return drinkStr.toString();
+    }
+
+    public void deleteDrink() {
+        drinksMap.remove(selectDrinkCode());
+        boolean appendInFile = false;
+        for (Drink drink : drinksMap.values()) {
+            saveDrink(drink, appendInFile);
+            appendInFile = true;
+        }
+        System.out.println("Operação efetuada com sucesso!\n");
     }
 }

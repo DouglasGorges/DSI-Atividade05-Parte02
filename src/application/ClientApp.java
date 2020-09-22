@@ -66,19 +66,7 @@ public class ClientApp {
 
     private static void addDrink() {
         try {
-            HashMap<Integer, Drink> drinksMap = new HashMap<Integer, Drink>();
-            Integer mapControl = 0;
-
-            for (Drink drink : drink.loadDrinks()) {
-                drinksMap.put(++mapControl, drink);
-                //printItem(mapControl, drink);
-            }
-
-            Scanner scanCode = new Scanner(System.in);
-            System.out.println("Digite o código da bebida desejada:");
-            Integer drinkCode = scanCode.nextInt();
-
-            request.getMenuList().add(drinksMap.get(drinkCode));
+            request.getMenuList().add(drink.selectDrink());
 
             System.out.println("Bebida adicionada ao pedido com sucesso!\n");
 
@@ -90,19 +78,7 @@ public class ClientApp {
 
     private static void addWine() {
         try {
-            HashMap<Integer, Wine> winesMap = new HashMap<Integer, Wine>();
-            Integer mapControl = 0;
-
-            for (Wine wine : wine.loadWines()) {
-                winesMap.put(++mapControl, wine);
-                //printItem(mapControl, wine);
-            }
-
-            Scanner scanCode = new Scanner(System.in);
-            System.out.println("Digite o código do vinho desejado:");
-            Integer wineCode = scanCode.nextInt();
-
-            request.getMenuList().add(winesMap.get(wineCode));
+            request.getMenuList().add(wine.selectWine());
 
             System.out.println("Vinho adicionado ao pedido com sucesso!\n");
 
