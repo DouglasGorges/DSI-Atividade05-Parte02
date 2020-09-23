@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class ClientApp {
 
-    static String HEAD = "Cód \t Descrição \t\t\t\t\t\t\t\t\t Preço";
+    static String HEAD = "Cód \t        Descrição \t\t\t\t        Preço\n";
     static Request request = new Request();
     private static Plate plate = new Plate();
     private static Drink drink = new Drink();
@@ -28,12 +28,14 @@ public class ClientApp {
     private static void initMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Selecione um tipo de produto");
-        System.out.println("1 - Pratos");
-        System.out.println("2 - Bebidas");
-        System.out.println("3 - Vinhos");
-        System.out.println("");
-        System.out.println("4 - Reiniciar pedido");
-        System.out.println("5 - Finalizar pedido");
+        System.out.println("_____________________________");
+        System.out.println("|        1 - Pratos         |");
+        System.out.println("|        2 - Bebidas        |");
+        System.out.println("|        3 - Vinhos         |");
+        System.out.println("_____________________________");
+        System.out.println("|     4 - Reiniciar pedido  |");
+        System.out.println("|     5 - Finalizar pedido  |");
+        System.out.println("_____________________________");
         Integer productType = scanner.nextInt();
 
         if (productType.equals(1)) {

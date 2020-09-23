@@ -23,3 +23,6 @@ Pepsi	5.3
 VinhoDGPRECO	11.0
 Observações: n;
 
+Frango xadrez	11.3
+Observações: Não;
+

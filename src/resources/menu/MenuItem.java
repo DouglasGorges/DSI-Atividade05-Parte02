@@ -8,7 +8,7 @@ public abstract class MenuItem {
     String name;
     Double price;
     static Integer CHARACTERS_QTY = 40;
-    static String CODIGO_DESEJADO = "Digite o código do produto desejado:";
+    static String CODIGO_DESEJADO = "\nDigite o código do produto desejado:";
     static String SUCESSO = "Operação efetuada com sucesso!\n";
 
     public MenuItem() {
