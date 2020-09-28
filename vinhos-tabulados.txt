@@ -8,5 +8,5 @@ PRECO	VINHO
 54.0	Riesling Itálico
 38.1	Chardonnay Americano
 57.0	Gewurztraminer
-39.9	Semillón
+12.0	SemillonDG
 46.9	Sauvignon Blanc

@@ -93,4 +93,26 @@ public class Plate extends MenuItem {
         }
         System.out.println(SUCESSO);
     }
+
+    public void editPlate() {
+        Integer plateCodeToEdit = selectPlateCode();
+        Plate plateToEdit = platesMap.get(plateCodeToEdit);
+
+        Scanner scanItemType = new Scanner(System.in);
+        System.out.println("Digite o novo nome do item: ");
+        String itemName = scanItemType.next();
+        plateToEdit.setName(itemName);
+
+        System.out.println("Digite o novo preço do item: ");
+        Double itemPrice = scanItemType.nextDouble();
+        plateToEdit.setPrice(itemPrice);
+
+        platesMap.replace(plateCodeToEdit, plateToEdit);
+        boolean appendInFile = false;
+        for (Plate plate : platesMap.values()) {
+            savePlate(plate, appendInFile);
+            appendInFile = true;
+        }
+        System.out.println(SUCESSO);
+    }
 }

@@ -96,4 +96,26 @@ public class Drink extends MenuItem {
         }
         System.out.println(SUCESSO);
     }
+
+    public void editDrink() {
+        Integer drinkCodeToEdit = selectDrinkCode();
+        Drink drinkToEdit = drinksMap.get(drinkCodeToEdit);
+
+        Scanner scanItemType = new Scanner(System.in);
+        System.out.println("Digite o novo nome do item: ");
+        String itemName = scanItemType.next();
+        drinkToEdit.setName(itemName);
+
+        System.out.println("Digite o novo preço do item: ");
+        Double itemPrice = scanItemType.nextDouble();
+        drinkToEdit.setPrice(itemPrice);
+
+        drinksMap.replace(drinkCodeToEdit, drinkToEdit);
+        boolean appendInFile = false;
+        for (Drink drink : drinksMap.values()) {
+            saveDrink(drink, appendInFile);
+            appendInFile = true;
+        }
+        System.out.println(SUCESSO);
+    }
 }

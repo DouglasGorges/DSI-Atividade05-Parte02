@@ -26,3 +26,8 @@ Observações: n;
 Frango xadrez	11.3
 Observações: Não;
 
+PicadinhoDG	8.0
+FantaLaranja	8.0
+SemillonDG	12.0
+Observações: SemObs;
+

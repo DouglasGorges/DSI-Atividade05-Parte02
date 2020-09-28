@@ -94,4 +94,26 @@ public class Wine extends MenuItem {
         }
         System.out.println(SUCESSO);
     }
+
+    public void editWine() {
+        Integer wineCodeToEdit = selectWineCode();
+        Wine wineToEdit = winesMap.get(wineCodeToEdit);
+
+        Scanner scanItemType = new Scanner(System.in);
+        System.out.println("Digite o novo nome do item: ");
+        String itemName = scanItemType.next();
+        wineToEdit.setName(itemName);
+
+        System.out.println("Digite o novo preço do item: ");
+        Double itemPrice = scanItemType.nextDouble();
+        wineToEdit.setPrice(itemPrice);
+
+        winesMap.replace(wineCodeToEdit, wineToEdit);
+        boolean appendInFile = false;
+        for (Wine wine : winesMap.values()) {
+            saveWine(wine, appendInFile);
+            appendInFile = true;
+        }
+        System.out.println(SUCESSO);
+    }
 }

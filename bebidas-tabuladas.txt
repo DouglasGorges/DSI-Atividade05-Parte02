@@ -3,6 +3,5 @@ PRECO	BEBIDA
 3,0	Água mineral sem gás
 5,0	Água-de-coco
 7,6	Coca-Cola
-6,5	Fanta Laranja
+8,0	FantaLaranja
 6,5	Fanta Uva
-4,5	Limonada

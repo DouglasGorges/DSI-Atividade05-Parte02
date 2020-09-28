@@ -41,14 +41,17 @@ public class ManagerApp {
         System.out.println("Selecione uma função:");
         System.out.println("1 - Adicionar Item");
         System.out.println("2 - Remover Item");
+        System.out.println("3 - Editar Item");
         System.out.println("");
-        System.out.println("3 - Voltar ao menu principal");
+        System.out.println("4 - Voltar ao menu principal");
         Integer function = scanFunction.nextInt();
 
         if (function.equals(1))
             addRegister();
         else if (function.equals(2))
             removeRegister();
+        else if (function.equals(3))
+            editRegister();
         else
             initMenu();
     }
@@ -70,6 +73,26 @@ public class ManagerApp {
             drink.deleteDrink();
         else if (itemType.equals(3))
             wine.deleteWine();
+        initMenu();
+    }
+
+    private static void editRegister() {
+        Scanner scanItemType = new Scanner(System.in);
+
+        System.out.println("Selecione um tipo de item:");
+        System.out.println("1 - Pratos");
+        System.out.println("2 - Bebidas");
+        System.out.println("3 - Vinhos");
+        System.out.println("");
+        System.out.println("4 - Voltar ao menu principal");
+        Integer itemType = scanItemType.nextInt();
+
+        if (itemType.equals(1))
+            plate.editPlate();
+        else if (itemType.equals(2))
+            drink.editDrink();
+        else if (itemType.equals(3))
+            wine.editWine();
         initMenu();
     }
 
